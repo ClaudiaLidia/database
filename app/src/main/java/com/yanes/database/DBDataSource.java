@@ -3,7 +3,7 @@ package com.yanes.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.ListView;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,8 @@ import java.util.List;
 public class DBDataSource {
     private SQLiteDatabase database;
     private MySQLiteHelper databaseHelper;
+    String state= null;
+    String t = null;
 
     public DBDataSource(Context context){
         databaseHelper = new MySQLiteHelper(context);
@@ -28,48 +30,50 @@ public class DBDataSource {
         database.close();
     }
 
-    public List <Person> getAllPeople(){
-        List<Person> people = new ArrayList<>();
+    public List <Final> getAll(){
+        List<Final> people = new ArrayList<>();
 
-        String[] columnNames = MySQLiteHelper.PersonColum.names();
+        String[] columnNames = MySQLiteHelper.FinalColum.names();
 
         // select person_id, last_name, first_name, age
         //from Person
         //order by last_name
 
         Cursor cursor = database.query(
-                MySQLiteHelper.PERSON_TABLE,
+                MySQLiteHelper.FINAL_TABLE,
                 columnNames,
                 null,null,null,null,
-                MySQLiteHelper.PersonColum.last_name.toString() //ordena por last name
+                MySQLiteHelper.FinalColum.Description.toString() //ordena por last name
         );
         cursor.moveToFirst();
-        while (! cursor.isAfterLast()) {
-            Person person = cursorToPerson(cursor);
-            people.add(person);
-            cursor.moveToNext();
-        }
+
+       while (! cursor.isAfterLast()) {
+
+                Final fin = cursorToPerson(cursor);
+               if(state.equals( States.State )&& t.equals( type.Type)) {
+                    people.add(fin);
+              }
+                cursor.moveToNext();
+
+     }
         cursor.close();
 
         return people;
     }
 
-    private Person cursorToPerson(Cursor cursor){
-        Person p = new Person();
+    private Final cursorToPerson(Cursor cursor){
+       Final p = new Final();
 
-        int personId = cursor.getInt(MySQLiteHelper.PersonColum.person_id.ordinal());
-        p.setPersonId(personId);
+        state = cursor.getString(MySQLiteHelper.FinalColum.State.ordinal());
+            p.setState(state);
 
-        String  lastName = cursor.getString(MySQLiteHelper.PersonColum.last_name.ordinal());
-        p.setLast(lastName);
+         t = cursor.getString(MySQLiteHelper.FinalColum.Type.ordinal());
+            p.setType(t);
 
-        String  firstName = cursor.getString(MySQLiteHelper.PersonColum.first_name.ordinal());
-        p.setFirst(firstName);
+            String des = cursor.getString(MySQLiteHelper.FinalColum.Description.ordinal());
+            p.setDescription(des);
 
-        int age = cursor.getInt(MySQLiteHelper.PersonColum.age.ordinal());
-        p.setAge(age);
 
         return p;
-
     }
 }

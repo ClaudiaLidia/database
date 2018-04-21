@@ -1,10 +1,14 @@
 package com.yanes.database;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +29,17 @@ public class MainActivity extends ListActivity {
         super.onStart();
         dbDataSource.open();
 
-        List<Person> people = dbDataSource.getAllPeople();
+    List<Final> people = dbDataSource.getAll();
 
-        ArrayAdapter<Person> adapter = new ArrayAdapter<Person>(getApplicationContext(),android.R.layout.simple_list_item_1, people);
+        ArrayAdapter<Final> adapter = new ArrayAdapter<Final>(getApplicationContext(),android.R.layout.simple_list_item_1, people);
         setListAdapter(adapter);
     }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        Intent intent=new Intent(this, Info.class);
+        startActivity(intent);
+ }
 
     @Override
     protected void onStop() {
