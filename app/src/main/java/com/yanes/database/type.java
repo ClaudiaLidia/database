@@ -15,7 +15,7 @@ import android.widget.ListView;
 public class type extends Activity implements AdapterView.OnItemClickListener {
     public static String  Type;
     static final String[] TYPES={
-            "Food","Music","Place",
+            "Capital","Foods & Drinks","Places",
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +34,10 @@ public class type extends Activity implements AdapterView.OnItemClickListener {
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        String name= (String) adapterView.getItemAtPosition(i);
-        Type = name;
 
-       Intent intent=new Intent(this,MainActivity.class);
+        Type = (String) adapterView.getItemAtPosition(i);
+
+       Intent intent=new Intent(this,Info.class);
        startActivity(intent);
     }
 }

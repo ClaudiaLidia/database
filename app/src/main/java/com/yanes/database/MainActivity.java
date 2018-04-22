@@ -29,16 +29,16 @@ public class MainActivity extends ListActivity {
         super.onStart();
         dbDataSource.open();
 
-    List<Final> people = dbDataSource.getAll();
+   List<Final> people = dbDataSource.getAll();
 
-        ArrayAdapter<Final> adapter = new ArrayAdapter<Final>(getApplicationContext(),android.R.layout.simple_list_item_1, people);
-        setListAdapter(adapter);
+       ArrayAdapter<Final> adapter = new ArrayAdapter<Final>(getApplicationContext(),android.R.layout.simple_list_item_1, people);
+    setListAdapter(adapter);
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Intent intent=new Intent(this, Info.class);
-        startActivity(intent);
+       // Intent intent=new Intent(this, Info.class);
+       // startActivity(intent);
  }
 
     @Override

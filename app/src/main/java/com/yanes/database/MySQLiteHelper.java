@@ -18,15 +18,15 @@ import java.io.OutputStream;
  */
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    public static final String DB_NAME = "Final.db";
+    public static final String DB_NAME = "Album.db";
 
     public static  final String DB_VERSION_KEY = "db_ver";
     public  static final int DB_VERSION = 1;
 
-    public static final String FINAL_TABLE = "Final";
+    public static final String FINAL_TABLE = "Album";
 
     public enum FinalColum {
-        State, Type, Description;
+        State, Type, Name, Description, Imagen;
 
         public static String[] names(){
             FinalColum[] v= values();

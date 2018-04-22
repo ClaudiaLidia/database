@@ -43,7 +43,7 @@ public class DBDataSource {
                 MySQLiteHelper.FINAL_TABLE,
                 columnNames,
                 null,null,null,null,
-                MySQLiteHelper.FinalColum.Description.toString() //ordena por last name
+                MySQLiteHelper.FinalColum.Name.toString() //ordena por name
         );
         cursor.moveToFirst();
 
@@ -69,9 +69,13 @@ public class DBDataSource {
 
          t = cursor.getString(MySQLiteHelper.FinalColum.Type.ordinal());
             p.setType(t);
-
+        String name = cursor.getString(MySQLiteHelper.FinalColum.Name.ordinal());
+        p.setName(name);
             String des = cursor.getString(MySQLiteHelper.FinalColum.Description.ordinal());
             p.setDescription(des);
+
+        int im = cursor.getInt(MySQLiteHelper.FinalColum.Imagen.ordinal());
+        p.setImagen(im);
 
 
         return p;

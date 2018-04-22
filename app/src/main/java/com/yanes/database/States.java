@@ -20,7 +20,8 @@ public class States extends Activity implements AdapterView.OnItemClickListener{
     public static String State;
 
    static final String[] STATES={
-            "Tn","As","sss","CA",
+            "California(CA)","Florida(FL)","Georgia(GA)","Hawaii(HI)",
+           "New York(NY)", "Tennessee(TN)", "Texas(TX)",
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class States extends Activity implements AdapterView.OnItemClickListener{
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        String name= (String) adapterView.getItemAtPosition(i);
-        State = name;
+
+        State = (String) adapterView.getItemAtPosition(i);
         Intent intent=new Intent(this,type.class);
         startActivity(intent);
     }
