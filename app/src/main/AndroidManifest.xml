@@ -20,6 +20,7 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".States"/>
         <activity android:name=".type"/>
+        <activity android:name=".Aboutus"/>
     </application>
 
 </manifest>

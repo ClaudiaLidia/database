@@ -29,6 +29,8 @@ public class MainActivity1 extends Activity implements View.OnClickListener {
             startActivity(intent);
 
         }else if(view.getId() == R.id.about_us){
+            Intent intent=new Intent(this,Aboutus.class);
+            startActivity(intent);
 
         }
     }
