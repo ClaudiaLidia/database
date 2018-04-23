@@ -20,6 +20,8 @@ public class MainActivity1 extends Activity implements View.OnClickListener {
         album.setOnClickListener(this);
         Button about_us= (Button) findViewById(R.id.about_us);
         about_us.setOnClickListener(this);
+        Button resource= (Button) findViewById(R.id.resources);
+        resource.setOnClickListener(this);
     }
 
     @Override
@@ -30,6 +32,10 @@ public class MainActivity1 extends Activity implements View.OnClickListener {
 
         }else if(view.getId() == R.id.about_us){
             Intent intent=new Intent(this,Aboutus.class);
+            startActivity(intent);
+
+        }else if(view.getId() == R.id.resources){
+            Intent intent=new Intent(this,Resources.class);
             startActivity(intent);
 
         }
