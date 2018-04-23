@@ -3,12 +3,16 @@ package com.yanes.database;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 /**
@@ -30,11 +34,11 @@ public class Info extends ListActivity {
     protected void onStart() {
         super.onStart();
         dbDataSource.open();
-  List<Final> people = dbDataSource.getAll();
+        List<Final> people = dbDataSource.getAll();
 
-        ArrayAdapter<Final> adapter = new ArrayAdapter<Final>(getApplicationContext(),android.R.layout.simple_list_item_1, people);
+       ArrayAdapter<Final> adapter = new ArrayAdapter<Final>(getApplicationContext(),android.R.layout.simple_list_item_1, people);
 
-setListAdapter(adapter);
+       setListAdapter(adapter);
     }
 
     @Override
@@ -46,9 +50,10 @@ setListAdapter(adapter);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+
+
         builder.setMessage(Html.fromHtml("<html>" + "<p><b>Name: </b>" + fin.getName()+"</p>" + "<p><b>State: </b>" + fin.getState()+"</p>" +
-                "<p><b>Type: </b>" + fin.getType()+"</p>" + "<p><b>Description: </b>" + fin.getDescription()
-        +"</p>"+"</html>"));
+                "<p><b>Type: </b>" + fin.getType()+"</p>" + "<p><b>Description: </b>" + fin.getDescription() +"</p>" +"</html>"));
         builder. setTitle("Info");
         builder.create().show();
     }

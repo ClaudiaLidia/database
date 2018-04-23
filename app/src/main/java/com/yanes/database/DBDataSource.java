@@ -3,6 +3,7 @@ package com.yanes.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class DBDataSource {
         //from Person
         //order by last_name
 
-        Cursor cursor = database.query(
+      Cursor cursor = database.query(
                 MySQLiteHelper.FINAL_TABLE,
                 columnNames,
                 null,null,null,null,
@@ -74,10 +75,6 @@ public class DBDataSource {
             String des = cursor.getString(MySQLiteHelper.FinalColum.Description.ordinal());
             p.setDescription(des);
 
-        int im = cursor.getInt(MySQLiteHelper.FinalColum.Imagen.ordinal());
-        p.setImagen(im);
-
-
-        return p;
+            return p;
     }
 }
